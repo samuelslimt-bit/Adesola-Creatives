@@ -29,24 +29,32 @@ export default function App() {
 
   // Sync scroll position with activeTab
   useEffect(() => {
-    const handleScroll = () => {
-      const sectionIds = ['hero', 'services', 'portfolio', 'process', 'about', 'packages', 'contact'];
-      const scrollPosition = window.scrollY + 200;
+    let ticking = false;
 
-      for (const id of sectionIds) {
-        const element = document.getElementById(id);
-        if (element) {
-          const top = element.offsetTop;
-          const height = element.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveTab(id);
-            break;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const sectionIds = ['hero', 'services', 'portfolio', 'process', 'about', 'packages', 'contact'];
+          const scrollPosition = window.scrollY + 200;
+
+          for (const id of sectionIds) {
+            const element = document.getElementById(id);
+            if (element) {
+              const top = element.offsetTop;
+              const height = element.offsetHeight;
+              if (scrollPosition >= top && scrollPosition < top + height) {
+                setActiveTab((prev) => (prev !== id ? id : prev));
+                break;
+              }
+            }
           }
-        }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 

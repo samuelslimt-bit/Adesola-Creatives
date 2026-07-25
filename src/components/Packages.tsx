@@ -112,12 +112,12 @@ export const Packages: React.FC<PackagesProps> = ({ onOpenBookModal, onOpenQuote
                   onClick={() => onOpenBookModal(`Package: ${pkg.name}`)}
                   className={`w-full py-3.5 px-4 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-md ${
                     pkg.popular
-                      ? 'bg-[#E10600] hover:bg-red-700 text-white red-glow hover:scale-105'
-                      : 'bg-black hover:bg-neutral-800 border border-neutral-700 text-white'
+                      ? 'bg-[#E10600] hover:bg-red-700 text-white keep-white red-glow hover:scale-105'
+                      : 'bg-black keep-dark hover:bg-neutral-800 border border-neutral-700 text-white keep-white'
                   }`}
                 >
-                  <span>Request Quote for {pkg.name}</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <span className="keep-white">Request Quote for {pkg.name}</span>
+                  <ArrowRight className="w-4 h-4 text-white keep-white" />
                 </button>
 
                 <div className="text-[11px] text-center text-neutral-500 flex items-center justify-center gap-1">

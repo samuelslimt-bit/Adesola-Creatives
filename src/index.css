@@ -69,33 +69,44 @@
   color-scheme: light;
 }
 
-/* Background overrides for sections & components */
+/* Background overrides for sections & main structural layouts */
 .white-theme section,
-.white-theme div.bg-\[\#0D0D0D\],
-.white-theme div.bg-black,
-.white-theme footer,
-.white-theme .bg-neutral-900,
-.white-theme .bg-neutral-950,
-.white-theme .bg-neutral-900\/90,
-.white-theme .bg-neutral-900\/80,
-.white-theme .bg-neutral-900\/50,
-.white-theme .bg-black\/80,
-.white-theme .bg-black\/90,
-.white-theme .bg-gradient-to-br,
-.white-theme .bg-gradient-to-r,
-.white-theme .bg-gradient-to-b {
-  background-color: #FAFAFA !important;
-  background-image: none !important;
+.white-theme #hero,
+.white-theme #portfolio,
+.white-theme #services,
+.white-theme #packages,
+.white-theme #about,
+.white-theme #process,
+.white-theme #contact {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
 }
 
-.white-theme .bg-neutral-800,
-.white-theme .bg-neutral-800\/80,
-.white-theme .bg-neutral-900\/60,
-.white-theme .bg-black\/50 {
+/* Hero background overlay in White Theme */
+.white-theme #hero .bg-gradient-to-t {
+  background: linear-gradient(to top, #FFFFFF 0%, rgba(255, 255, 255, 0.95) 50%, rgba(255, 255, 255, 0.75) 100%) !important;
+}
+
+/* Cards & containers in White Theme (that adapt to light theme) */
+.white-theme .bg-neutral-900:not(.keep-dark):not(.dark-box),
+.white-theme .bg-neutral-950:not(.keep-dark):not(.dark-box),
+.white-theme .bg-neutral-900\/90:not(.keep-dark):not(.dark-box),
+.white-theme .bg-neutral-900\/80:not(.keep-dark):not(.dark-box),
+.white-theme .bg-neutral-900\/60:not(.keep-dark):not(.dark-box),
+.white-theme .bg-neutral-900\/50:not(.keep-dark):not(.dark-box) {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+  color: #0F172A !important;
+}
+
+.white-theme .bg-neutral-800:not(.keep-dark):not(.dark-box),
+.white-theme .bg-neutral-800\/80:not(.keep-dark):not(.dark-box) {
   background-color: #F1F5F9 !important;
+  border-color: #CBD5E1 !important;
+  color: #334155 !important;
 }
 
-/* Card & Container Borders */
+/* Card & Container Borders in White Theme */
 .white-theme .border-neutral-800,
 .white-theme .border-neutral-800\/80,
 .white-theme .border-neutral-700,
@@ -103,37 +114,65 @@
   border-color: #E2E8F0 !important;
 }
 
-/* Text Colors */
+/* Text Colors in White Theme Light Containers */
 .white-theme h1,
 .white-theme h2,
 .white-theme h3,
 .white-theme h4,
 .white-theme h5,
-.white-theme h6,
-.white-theme .text-white,
-.white-theme .font-bold.text-white {
+.white-theme h6 {
   color: #0F172A !important;
 }
 
+/* High Contrast Paragraph & Hero Intro Text */
 .white-theme p,
-.white-theme span:not(.text-\[\#E10600\]):not(.bg-\[\#E10600\] *),
-.white-theme label,
-.white-theme .text-neutral-200,
 .white-theme .text-neutral-300,
+.white-theme .text-neutral-200,
+.white-theme .text-slate-300,
+.white-theme .text-slate-200 {
+  color: #1E293B !important;
+}
+
 .white-theme .text-neutral-400,
+.white-theme .text-neutral-500,
 .white-theme .text-slate-400 {
-  color: #334155 !important;
+  color: #475569 !important;
 }
 
-/* Keep Brand Accent Buttons & Highlights Red */
-.white-theme .text-\[\#E10600\],
-.white-theme .text-red-500 {
-  color: #E10600 !important;
-}
-
-.white-theme .bg-\[\#E10600\] {
-  background-color: #E10600 !important;
+/* Preserve White Text inside Dark Boxes, Red Buttons, and Media Overlays */
+.white-theme .keep-dark,
+.white-theme .dark-box,
+.white-theme .bg-black,
+.white-theme .bg-black\/80,
+.white-theme .bg-black\/90,
+.white-theme .bg-black\/70,
+.white-theme .bg-\[\#E10600\],
+.white-theme .bg-red-600,
+.white-theme .bg-red-700,
+.white-theme .bg-[#25D366] {
   color: #FFFFFF !important;
+}
+
+.white-theme .keep-dark *,
+.white-theme .dark-box *,
+.white-theme .bg-black *,
+.white-theme .bg-black\/80 *,
+.white-theme .bg-black\/90 *,
+.white-theme .bg-black\/70 *,
+.white-theme .bg-\[\#E10600\] *,
+.white-theme .bg-red-600 *,
+.white-theme .bg-red-700 *,
+.white-theme .bg-[#25D366] *,
+.white-theme .keep-white,
+.white-theme .keep-white * {
+  color: #FFFFFF !important;
+}
+
+/* Ensure red accent text stays red in white theme */
+.white-theme .text-\[\#E10600\],
+.white-theme .text-red-500,
+.white-theme .text-red-600 {
+  color: #E10600 !important;
 }
 
 /* Input Fields in White Theme */
@@ -158,9 +197,9 @@
 
 /* Modals in White Theme */
 .white-theme .fixed .bg-neutral-950,
-.white-theme .fixed .bg-neutral-900,
-.white-theme .fixed .bg-black {
+.white-theme .fixed .bg-neutral-900 {
   background-color: #FFFFFF !important;
   border-color: #E2E8F0 !important;
+  color: #0F172A !important;
 }
 

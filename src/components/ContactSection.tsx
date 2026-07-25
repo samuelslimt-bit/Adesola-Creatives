@@ -38,24 +38,52 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     }
   }, [preselectedService]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     const targetEmail = BRAND_INFO.email; // ade.adesola023@gmail.com
-    const subject = encodeURIComponent(`Booking Request: ${formData.service} - ${formData.fullName}`);
-    const body = encodeURIComponent(
-      `Full Name: ${formData.fullName}\nPhone/WhatsApp: ${formData.phone}\nClient Email: ${formData.email}\nPrimary Service: ${formData.service}\nPreferred Contact Method: ${formData.preferredContact}\nBudget/Quote Goal: ${formData.budgetRange}\n\nProject Details:\n${formData.projectDetails}`
-    );
 
-    // Launch direct mailto to recipient
-    window.location.href = `mailto:${targetEmail}?subject=${subject}&body=${body}`;
+    try {
+      // 1. Send via server API route
+      await fetch('/api/send-booking', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, targetEmail }),
+      }).catch((err) => console.warn('Server endpoint notice:', err));
 
-    setTimeout(() => {
+      // 2. Direct background submission to FormSubmit API to ensure instant inbox notification
+      const emailPayload = {
+        _subject: `🔥 New Booking Request: ${formData.service} - ${formData.fullName}`,
+        _template: "table",
+        _captcha: "false",
+        _replyto: formData.email,
+        "Full Name": formData.fullName,
+        "Client Email": formData.email,
+        "Phone / WhatsApp": formData.phone,
+        "Primary Service": formData.service,
+        "Package Selected": formData.packageSelected,
+        "Budget Goal": formData.budgetRange,
+        "Preferred Response Method": formData.preferredContact,
+        "Project Details / Dates / Location": formData.projectDetails,
+      };
+
+      await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify(emailPayload),
+      }).catch((err) => console.warn('Direct submission notice:', err));
+
+    } catch (error) {
+      console.error("Booking submission error:", error);
+    } finally {
       setIsSubmitting(false);
       setSubmitted(true);
-      onShowToast(`🎉 Booking request sent to ${targetEmail}!`);
-    }, 1000);
+      onShowToast(`🎉 Booking request sent directly to ${targetEmail}!`);
+    }
   };
 
   const copyToClipboard = (text: string, type: 'phone' | 'email') => {
@@ -117,13 +145,20 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 <span>Chat Instantly on WhatsApp</span>
               </a>
 
-              <a
-                href={`mailto:${BRAND_INFO.email}`}
-                className="px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 font-bold text-xs uppercase tracking-wider flex items-center gap-2 transition-all"
+              <button
+                type="button"
+                onClick={() => {
+                  const elem = document.getElementById('booking-full-name');
+                  if (elem) {
+                    elem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    elem.focus();
+                  }
+                }}
+                className="px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 font-bold text-xs uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer"
               >
                 <Mail className="w-4 h-4" />
-                <span>Send Email Request</span>
-              </a>
+                <span>Fill Booking Form</span>
+              </button>
             </div>
           </div>
         </div>
@@ -166,6 +201,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       Full Name *
                     </label>
                     <input
+                      id="booking-full-name"
                       type="text"
                       required
                       placeholder="e.g. Tobi Adebayo"

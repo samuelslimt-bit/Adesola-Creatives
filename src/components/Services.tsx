@@ -107,10 +107,10 @@ export const Services: React.FC<ServicesProps> = ({ onOpenBookModal }) => {
                 <div className="pt-4 border-t border-neutral-800 mt-auto">
                   <button
                     onClick={() => onOpenBookModal(service.title)}
-                    className="w-full py-3 px-4 rounded-xl bg-black hover:bg-[#E10600] border border-neutral-700 hover:border-[#E10600] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 group/btn transition-all shadow-md"
+                    className="w-full py-3 px-4 rounded-xl bg-black keep-dark hover:bg-[#E10600] border border-neutral-700 hover:border-[#E10600] text-white keep-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 group/btn transition-all shadow-md"
                   >
-                    <span>Book This Service</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                    <span className="keep-white">Book This Service</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform text-white keep-white" />
                   </button>
                 </div>
               </div>
@@ -119,7 +119,7 @@ export const Services: React.FC<ServicesProps> = ({ onOpenBookModal }) => {
         </div>
 
         {/* Sub-banner CTA */}
-        <div className="mt-16 rounded-2xl bg-gradient-to-r from-neutral-900 via-black to-neutral-900 border border-neutral-800 p-8 flex flex-col md:flex-row items-center justify-between gap-6 text-left">
+        <div className="mt-16 rounded-2xl bg-neutral-900 border border-neutral-800 p-8 flex flex-col md:flex-row items-center justify-between gap-6 text-left">
           <div>
             <h4 className="font-heading font-bold text-xl text-white">
               Need a Custom Multi-Service Package?
@@ -130,7 +130,7 @@ export const Services: React.FC<ServicesProps> = ({ onOpenBookModal }) => {
           </div>
           <button
             onClick={() => onOpenBookModal('Custom Multi-Service Bundle')}
-            className="shrink-0 px-6 py-3 rounded-xl bg-[#E10600] hover:bg-red-700 text-white font-bold text-xs uppercase tracking-wider shadow-lg red-glow transition-all"
+            className="shrink-0 px-6 py-3 rounded-xl bg-[#E10600] hover:bg-red-700 text-white keep-white font-bold text-xs uppercase tracking-wider shadow-lg red-glow transition-all"
           >
             Get Custom Bundle Quote
           </button>

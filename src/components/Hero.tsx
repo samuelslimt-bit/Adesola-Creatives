@@ -74,18 +74,18 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBookModal }) => {
             >
               <a
                 href="#portfolio"
-                className="px-8 py-4 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 hover:border-[#E10600]/60 text-white font-bold text-sm tracking-wide uppercase flex items-center justify-center gap-2 transition-all hover:shadow-lg group"
+                className="px-8 py-4 rounded-xl bg-neutral-900 keep-dark hover:bg-neutral-800 border border-neutral-700 hover:border-[#E10600]/60 text-white keep-white font-bold text-sm tracking-wide uppercase flex items-center justify-center gap-2 transition-all hover:shadow-lg group"
               >
-                <span>View Catalog</span>
+                <span className="keep-white">View Catalog</span>
                 <ArrowRight className="w-4 h-4 text-[#E10600] group-hover:translate-x-1 transition-transform" />
               </a>
 
               <button
                 onClick={onOpenBookModal}
-                className="px-8 py-4 rounded-xl bg-[#E10600] hover:bg-red-700 text-white font-bold text-sm tracking-wide uppercase shadow-xl red-glow-lg flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                className="px-8 py-4 rounded-xl bg-[#E10600] hover:bg-red-700 text-white keep-white font-bold text-sm tracking-wide uppercase shadow-xl red-glow-lg flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-all"
               >
-                <Camera className="w-4 h-4" />
-                <span>Book a Session</span>
+                <Camera className="w-4 h-4 text-white keep-white" />
+                <span className="keep-white">Book a Session</span>
               </button>
             </motion.div>
 
@@ -146,9 +146,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBookModal }) => {
                   className="absolute inset-0 flex flex-col items-center justify-center gap-3 group/play cursor-pointer"
                 >
                   <div className="w-16 h-16 rounded-full bg-[#E10600] text-white flex items-center justify-center shadow-2xl red-glow-lg group-hover/play:scale-110 transition-transform">
-                    <Play className="w-8 h-8 fill-white ml-1" />
+                    <Play className="w-8 h-8 fill-white ml-1 text-white keep-white" />
                   </div>
-                  <span className="px-3 py-1 bg-black/80 backdrop-blur-md rounded-full text-xs font-semibold text-white border border-neutral-700">
+                  <span className="px-3 py-1 bg-black/80 keep-dark backdrop-blur-md rounded-full text-xs font-semibold text-white keep-white border border-neutral-700">
                     Watch Featured Work
                   </span>
                 </a>
@@ -156,10 +156,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBookModal }) => {
                 {/* Reel Floating Badges */}
                 <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end text-left">
                   <div>
-                    <div className="text-xs font-bold text-white font-heading">
-                      Adesola Oluwatosin Samuel
-                    </div>
-                    <div className="text-[11px] text-gray-300 font-mono">
+                    <div className="text-[11px] text-gray-300 keep-white font-mono">
                       Mobile Cinematography & Photography
                     </div>
                   </div>
@@ -167,7 +164,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBookModal }) => {
                     <div className="text-xs font-bold text-[#E10600]">
                       3.5M+ Views
                     </div>
-                    <div className="text-[10px] text-gray-400">
+                    <div className="text-[10px] text-gray-300 keep-white">
                       Reels & TikTok
                     </div>
                   </div>

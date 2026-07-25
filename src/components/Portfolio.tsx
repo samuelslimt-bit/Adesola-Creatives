@@ -70,12 +70,12 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenBookModal }) => {
               onClick={() => setActiveFilter(tab.id)}
               className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
                 activeFilter === tab.id
-                  ? 'bg-[#E10600] text-white shadow-lg red-glow scale-105'
+                  ? 'bg-[#E10600] text-white keep-white shadow-lg red-glow scale-105'
                   : 'bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white hover:border-neutral-700'
               }`}
             >
               {tab.icon}
-              <span>{tab.label}</span>
+              <span className={activeFilter === tab.id ? 'keep-white' : ''}>{tab.label}</span>
             </button>
           ))}
         </div>
@@ -106,7 +106,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenBookModal }) => {
 
                   {/* Top Category Badge */}
                   <div className="absolute top-4 left-4 z-10">
-                    <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-black/80 backdrop-blur-md text-white border border-neutral-700">
+                    <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-black/80 keep-dark backdrop-blur-md text-white keep-white border border-neutral-700">
                       {item.categoryLabel}
                     </span>
                   </div>
@@ -114,17 +114,17 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenBookModal }) => {
                   {/* Play icon indicator if video */}
                   {item.videoUrl && (
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-12 h-12 rounded-full bg-[#E10600]/90 text-white flex items-center justify-center shadow-lg red-glow group-hover:scale-125 transition-transform">
-                        <Play className="w-6 h-6 fill-white ml-0.5" />
+                      <div className="w-12 h-12 rounded-full bg-[#E10600]/90 text-white keep-white flex items-center justify-center shadow-lg red-glow group-hover:scale-125 transition-transform">
+                        <Play className="w-6 h-6 fill-white text-white keep-white ml-0.5" />
                       </div>
                     </div>
                   )}
 
                   {/* Quick View Hover Overlay Button */}
                   <div className="absolute bottom-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="px-3 py-1.5 rounded-lg bg-[#E10600] text-white text-xs font-bold flex items-center gap-1.5 shadow-md">
-                      <Eye className="w-3.5 h-3.5" />
-                      <span>View Project Details</span>
+                    <div className="px-3 py-1.5 rounded-lg bg-[#E10600] text-white keep-white text-xs font-bold flex items-center gap-1.5 shadow-md">
+                      <Eye className="w-3.5 h-3.5 text-white keep-white" />
+                      <span className="keep-white">View Project Details</span>
                     </div>
                   </div>
                 </div>
