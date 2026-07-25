@@ -85,17 +85,23 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({ item, onClose, onB
                 </h3>
 
                 <div className="flex items-center gap-4 text-xs text-neutral-400 mb-6">
-                  <span className="flex items-center gap-1">
-                    <Calendar className="w-3.5 h-3.5 text-[#E10600]" />
-                    {item.date}
-                  </span>
-                  <span>•</span>
+                  {item.date && (
+                    <>
+                      <span className="flex items-center gap-1">
+                        <Calendar className="w-3.5 h-3.5 text-[#E10600]" />
+                        {item.date}
+                      </span>
+                      <span>•</span>
+                    </>
+                  )}
                   <span>{item.client}</span>
                 </div>
 
-                <p className="text-sm text-neutral-300 leading-relaxed mb-6">
-                  {item.description}
-                </p>
+                {item.description && (
+                  <p className="text-sm text-neutral-300 leading-relaxed mb-6">
+                    {item.description}
+                  </p>
+                )}
 
                 {/* Deliverables List */}
                 <div className="mb-6">

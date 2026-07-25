@@ -1,8 +1,9 @@
 import { ServiceItem, PortfolioItem, PricingPackage, ProcessStep, StatItem } from '../types';
 import founderImg from '../assets/images/founder_portrait_1784929267161.jpg';
 import heroBgImg from '../assets/images/hero_bg_1784929281558.jpg';
+import gearImg from '../assets/images/mobile_cinematography_gear_1784984495726.jpg';
 
-export { founderImg, heroBgImg };
+export { founderImg, heroBgImg, gearImg };
 
 export const BRAND_INFO = {
   name: "Adesola Creatives",
@@ -38,7 +39,7 @@ export const SERVICES: ServiceItem[] = [
     title: "Mobile Cinematography",
     category: "video",
     iconName: "Video",
-    imageUrl: "https://images.unsplash.com/photo-1527011046414-4781f1f94f8c?auto=format&fit=crop&w=800&q=80",
+    imageUrl: gearImg,
     shortDesc: "High-impact, 4K mobile video production engineered for Instagram Reels, TikTok, YouTube Shorts, and brand commercials.",
     fullDesc: "We bring cinematic flair to high-end mobile video production. Using advanced gimbals, specialized lenses, wireless microphones, and portable lighting rigs, we shoot crisp 4K vertical and horizontal video content that stops the scroll.",
     features: [
@@ -63,11 +64,11 @@ export const SERVICES: ServiceItem[] = [
       "Brand Identity & Logo Design Packages",
       "High-Converting Social Media Flyers & Banners",
       "Multi-Page Instagram Carousel Templates",
-      "Billboard, Merchandise & Event Backdrop Graphics",
+      "Billboard, Merchandise & Event Backdrop Assets",
       "Source Files Included (AI/PSD/PDF)"
     ],
     startingPrice: "Tailored Pricing",
-    deliverables: "Vector Logos, Brand Guideline Sheet, Custom Social Graphics"
+    deliverables: "Vector Logos, Brand Guideline Sheet, Custom Visual Assets"
   },
   {
     id: "creative-mobile-photography",
@@ -92,7 +93,7 @@ export const SERVICES: ServiceItem[] = [
     title: "Social Media Growth & Management",
     category: "social",
     iconName: "TrendingUp",
-    imageUrl: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1611926653458-09294b3142bf?auto=format&fit=crop&w=800&q=80",
     shortDesc: "End-to-end growth strategy, content calendar creation, video publishing, community engagement, and organic page scaling.",
     fullDesc: "Take the guesswork out of social growth. We manage your Instagram and TikTok channels — producing mobile content, crafting compelling captions, scheduling posts, monitoring analytics, and engaging your audience worldwide.",
     features: [
@@ -110,101 +111,48 @@ export const SERVICES: ServiceItem[] = [
 export const PORTFOLIO_ITEMS: PortfolioItem[] = [
   {
     id: "p1",
-    title: "4K Mobile Fashion Reel — Runway Highlights",
+    title: "4K Mobile Cinematography",
     client: "Instagram Showcase",
     category: "video",
     categoryLabel: "Mobile Cinematography",
-    thumbnail: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80",
+    thumbnail: gearImg,
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    instagramUrl: "https://instagram.com/adesola_creatives",
-    description: "Dynamic 4K mobile video shoot capturing runway highlights, backstage model prep, and street style aesthetics. View full video post on Instagram.",
-    deliverables: ["1x 60s Main Fashion Reel", "3x 15s Story Teasers", "Raw B-Roll Reel"],
-    date: "June 2026"
-  },
-  {
-    id: "p2",
-    title: "Urban Streetwear Commercial Mobile Reel",
-    client: "Backup Instagram Showcase",
-    category: "video",
-    categoryLabel: "Mobile Cinematography",
-    thumbnail: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    instagramUrl: "https://instagram.com/adesolacreatives",
-    description: "High-energy mobile cinematography reel spotlighting young Nigerian creatives and tech entrepreneurs. View complete video post directly on Instagram.",
-    deliverables: ["4K Mobile Commercial Reel", "Social Media Teasers", "Raw B-Roll"],
-    date: "May 2026"
+    instagramUrl: "https://www.instagram.com/reel/DIchFTaozYF/?igsh=MTV0ZDR0ZXplM2MzeQ==",
+    description: "",
+    deliverables: ["1x 60s Main Reel", "3x 15s Story Cuts", "Raw B-Roll Reel"]
   },
   {
     id: "p3",
-    title: "High-Conversion Event Flyer & Social Carousel",
+    title: "Branding & Design",
     client: "Instagram Showcase",
     category: "design",
     categoryLabel: "Branding & Design",
     thumbnail: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=800&q=80",
     instagramUrl: "https://instagram.com/adesola_creatives",
-    description: "Custom promotional graphics, multi-slide educational carousels, and launch banners crafted for digital channels. View carousel post on Instagram.",
-    deliverables: ["Promotional Flyers", "Instagram Carousels", "Event Backdrop Design"],
-    date: "April 2026"
-  },
-  {
-    id: "p4",
-    title: "Brand Identity & Graphic Design Suite",
-    client: "Backup Instagram Showcase",
-    category: "design",
-    categoryLabel: "Branding & Design",
-    thumbnail: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80",
-    instagramUrl: "https://instagram.com/adesolacreatives",
-    description: "Custom graphic design assets, typography layouts, color swatches, and visual social media banners. View post on Instagram.",
-    deliverables: ["Social Media Banners", "Visual Assets", "Brand Graphics"],
-    date: "March 2026"
+    description: "Custom promotional visuals, multi-slide educational carousels, brand identities, and launch banners. View design showcase on Instagram.",
+    deliverables: ["Promotional Banners", "Instagram Carousels", "Brand Visual Assets"]
   },
   {
     id: "p5",
-    title: "Creative Mobile Photography & Skin Retouching",
+    title: "Creative Mobile Photography",
     client: "Instagram Showcase",
     category: "photography",
     categoryLabel: "Mobile Photography",
     thumbnail: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80",
-    instagramUrl: "https://instagram.com/adesola_creatives",
+    instagramUrl: "https://www.instagram.com/p/DXv3wVAjKWv/?igsh=MXZtOGQzcTFveXg0MQ==",
     description: "Sharp mobile photography session with professional high-end skin retouching and color grading. View original photo set on Instagram.",
-    deliverables: ["Retouched High-Res Photos", "Web & Print Ready Exports"],
-    date: "February 2026"
-  },
-  {
-    id: "p6",
-    title: "Mobile Event & Brand Lifestyle Photography",
-    client: "Backup Instagram Showcase",
-    category: "photography",
-    categoryLabel: "Mobile Photography",
-    thumbnail: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80",
-    instagramUrl: "https://instagram.com/adesolacreatives",
-    description: "Vibrant mobile photography capturing candid brand moments, product framing, and event lighting. View photo gallery on Instagram.",
-    deliverables: ["Color-Graded Photos", "Private Online Gallery"],
-    date: "January 2026"
+    deliverables: ["Retouched High-Res Photos", "Web & Print Ready Exports"]
   },
   {
     id: "p7",
-    title: "Brand Scaling & Social Media Moderation",
+    title: "Social Media Growth & Management",
     client: "Instagram Showcase",
     category: "social",
     categoryLabel: "Social Media",
-    thumbnail: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=800&q=80",
+    thumbnail: "https://images.unsplash.com/photo-1611926653458-09294b3142bf?auto=format&fit=crop&w=800&q=80",
     instagramUrl: "https://instagram.com/adesola_creatives",
     description: "Strategic account management, publishing schedule, audience engagement, and monthly metric reporting. View campaign highlights on Instagram.",
-    deliverables: ["Monthly Content Calendar", "Audience Moderation", "Analytics Dashboard"],
-    date: "May 2026"
-  },
-  {
-    id: "p8",
-    title: "Social Content Strategy & Organic Growth",
-    client: "Backup Instagram Showcase",
-    category: "social",
-    categoryLabel: "Social Media",
-    thumbnail: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80",
-    instagramUrl: "https://instagram.com/adesolacreatives",
-    description: "Organic growth campaign utilizing mobile video reels, trend curation, and strategic posting. View full breakdown on Instagram.",
-    deliverables: ["Organic Growth Strategy", "Content Curation", "Monthly Performance Deck"],
-    date: "April 2026"
+    deliverables: ["Monthly Content Calendar", "Audience Moderation", "Analytics Dashboard"]
   }
 ];
 
@@ -227,14 +175,14 @@ export const PROCESS_STEPS: ProcessStep[] = [
     stepNumber: "03",
     title: "Production & Creation",
     subtitle: "Lights, Mobile Camera, Action",
-    description: "Execution day! On-site 4K mobile video shooting, creative mobile photography, or brand graphic creation with artistic direction to capture your finest moments.",
+    description: "Execution day! On-site 4K mobile video shooting, creative mobile photography, or brand content creation with artistic direction to capture your finest moments.",
     details: ["4K Mobile video setup", "Mobile lighting & wireless audio", "Real-time client playback preview"]
   },
   {
     stepNumber: "04",
     title: "Editing & Delivery",
     subtitle: "Polished Visuals That Convert",
-    description: "Post-production magic. Professional skin retouching, color grading, sound design, motion graphics, and fast turnaround delivery ready to launch.",
+    description: "Post-production magic. Professional skin retouching, color grading, sound design, motion effects, and fast turnaround delivery ready to launch.",
     details: ["Professional retouching & color polish", "Revisions & client feedback", "Final high-res cloud transfer"]
   }
 ];
@@ -252,7 +200,7 @@ export const PRICING_PACKAGES: PricingPackage[] = [
       "1 On-site Mobile Shoot Session",
       "4 Color-Graded 4K Mobile Video Reels / TikToks",
       "10 Professionally Retouched High-Res Photos",
-      "Custom Graphic Cover Frames",
+      "Custom Video Cover Frames",
       "Licensed Trending Audio Selection",
       "1 Round of Editing Revisions"
     ]
@@ -288,7 +236,7 @@ export const PRICING_PACKAGES: PricingPackage[] = [
       "Dedicated Shoot Days Per Month",
       "16 High-Converting Mobile Video Reels / TikToks",
       "50 Retouched Photos & Brand Assets",
-      "10 Custom Graphic Banners & Identity Assets",
+      "10 Custom Promotional Banners & Identity Assets",
       "Full Instagram & TikTok Account Management",
       "Audience Engagement & Strategy Execution",
       "Monthly Analytics & Performance Insights",

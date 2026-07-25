@@ -22,10 +22,10 @@ export interface PortfolioItem {
   thumbnail: string;
   videoUrl?: string;
   instagramUrl?: string;
-  description: string;
+  description?: string;
   deliverables: string[];
   results?: string;
-  date: string;
+  date?: string;
 }
 
 export interface Testimonial {

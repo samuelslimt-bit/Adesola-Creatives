@@ -17,12 +17,12 @@ export default function App() {
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [selectedService, setSelectedService] = useState<string>('Mobile Cinematography');
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
-  const [isHighContrast, setIsHighContrast] = useState<boolean>(false);
+  const [isWhiteTheme, setIsWhiteTheme] = useState<boolean>(false);
 
-  const handleToggleHighContrast = () => {
-    setIsHighContrast((prev) => {
+  const handleToggleWhiteTheme = () => {
+    setIsWhiteTheme((prev) => {
       const next = !prev;
-      showToast(next ? '👁️ High Contrast Accessibility Mode Enabled' : 'Standard Dark Theme Restored');
+      showToast(next ? '☀️ White Theme Enabled' : '🌙 Dark Studio Theme Restored');
       return next;
     });
   };
@@ -85,7 +85,7 @@ export default function App() {
 
   return (
     <div className={`min-h-screen selection:bg-[#E10600] selection:text-white font-sans antialiased relative transition-colors duration-300 ${
-      isHighContrast ? 'bg-black text-white high-contrast-mode contrast-125' : 'bg-[#0D0D0D] text-slate-100'
+      isWhiteTheme ? 'bg-white text-slate-900 white-theme' : 'bg-[#0D0D0D] text-slate-100'
     }`}>
       {/* Navigation Bar */}
       <Navbar
@@ -93,8 +93,8 @@ export default function App() {
         onSelectTab={handleSelectTab}
         onOpenBookModal={handleOpenBookModal}
         onOpenQuoteModal={() => setIsQuoteModalOpen(true)}
-        isHighContrast={isHighContrast}
-        onToggleHighContrast={handleToggleHighContrast}
+        isWhiteTheme={isWhiteTheme}
+        onToggleWhiteTheme={handleToggleWhiteTheme}
       />
 
       {/* Main Multi-Page App Sections */}

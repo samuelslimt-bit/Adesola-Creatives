@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, PhoneCall, Sparkles, MessageSquare, Eye } from 'lucide-react';
+import { Menu, X, PhoneCall, Sparkles, MessageSquare, Sun, Moon } from 'lucide-react';
 import { BRAND_INFO } from '../data/portfolioData';
 import { Logo } from './Logo';
 
@@ -9,8 +9,8 @@ interface NavbarProps {
   onSelectTab: (tabId: string) => void;
   onOpenBookModal: (serviceOrPackage?: string) => void;
   onOpenQuoteModal: () => void;
-  isHighContrast: boolean;
-  onToggleHighContrast: () => void;
+  isWhiteTheme: boolean;
+  onToggleWhiteTheme: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -18,8 +18,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   onSelectTab,
   onOpenBookModal,
   onOpenQuoteModal,
-  isHighContrast,
-  onToggleHighContrast,
+  isWhiteTheme,
+  onToggleWhiteTheme,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -101,19 +101,28 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Action Buttons */}
         <div className="hidden lg:flex items-center gap-3">
-          {/* High Contrast Accessibility Toggle */}
+          {/* White Theme / Dark Theme Toggle */}
           <button
-            onClick={onToggleHighContrast}
+            onClick={onToggleWhiteTheme}
             className={`flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-lg border transition-all ${
-              isHighContrast
-                ? 'bg-yellow-400 text-black border-yellow-300 font-bold shadow-md'
+              isWhiteTheme
+                ? 'bg-slate-100 text-slate-900 border-slate-300 font-bold shadow-sm hover:bg-slate-200'
                 : 'bg-neutral-900 border-neutral-700 text-neutral-300 hover:text-white hover:border-neutral-500'
             }`}
-            title="Toggle High Contrast Mode for Accessibility"
-            aria-label="Toggle High Contrast Mode"
+            title="Switch between White Theme and Dark Studio Theme"
+            aria-label="Toggle White Theme"
           >
-            <Eye className="w-3.5 h-3.5" />
-            <span>{isHighContrast ? 'Contrast: High' : 'High Contrast'}</span>
+            {isWhiteTheme ? (
+              <>
+                <Moon className="w-3.5 h-3.5 text-neutral-700" />
+                <span>Dark Studio</span>
+              </>
+            ) : (
+              <>
+                <Sun className="w-3.5 h-3.5 text-yellow-400" />
+                <span>White Theme</span>
+              </>
+            )}
           </button>
 
           <button
@@ -137,16 +146,16 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Mobile Hamburger Button & Quick Actions */}
         <div className="flex lg:hidden items-center gap-2">
           <button
-            onClick={onToggleHighContrast}
+            onClick={onToggleWhiteTheme}
             className={`p-2 text-xs font-bold rounded-lg border transition-all ${
-              isHighContrast
-                ? 'bg-yellow-400 text-black border-yellow-300'
+              isWhiteTheme
+                ? 'bg-slate-200 text-slate-900 border-slate-300'
                 : 'bg-neutral-900 text-neutral-300 border-neutral-800 hover:text-white'
             }`}
-            title="High Contrast Mode"
-            aria-label="High Contrast Mode"
+            title="Toggle White Theme"
+            aria-label="Toggle White Theme"
           >
-            <Eye className="w-4 h-4" />
+            {isWhiteTheme ? <Moon className="w-4 h-4 text-slate-800" /> : <Sun className="w-4 h-4 text-yellow-400" />}
           </button>
 
           <button
@@ -194,19 +203,19 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             <div className="pt-3 border-t border-neutral-800 space-y-2">
               <button
-                onClick={onToggleHighContrast}
+                onClick={onToggleWhiteTheme}
                 className={`w-full flex items-center justify-between px-4 py-3 text-sm font-semibold rounded-lg border transition-all ${
-                  isHighContrast
-                    ? 'bg-yellow-400 text-black border-yellow-300 font-bold'
+                  isWhiteTheme
+                    ? 'bg-slate-100 text-slate-900 border-slate-300 font-bold'
                     : 'bg-neutral-900 border-neutral-700 text-neutral-200'
                 }`}
               >
                 <div className="flex items-center gap-2">
-                  <Eye className="w-4 h-4" />
-                  <span>High Contrast Mode</span>
+                  {isWhiteTheme ? <Moon className="w-4 h-4 text-slate-800" /> : <Sun className="w-4 h-4 text-yellow-400" />}
+                  <span>{isWhiteTheme ? 'Switch to Dark Studio' : 'Switch to White Theme'}</span>
                 </div>
-                <span className={`text-xs px-2 py-0.5 rounded font-mono ${isHighContrast ? 'bg-black text-white' : 'bg-neutral-800 text-neutral-400'}`}>
-                  {isHighContrast ? 'ACTIVE' : 'OFF'}
+                <span className={`text-xs px-2 py-0.5 rounded font-mono ${isWhiteTheme ? 'bg-slate-200 text-slate-800' : 'bg-neutral-800 text-neutral-400'}`}>
+                  {isWhiteTheme ? 'WHITE' : 'DARK'}
                 </span>
               </button>
 

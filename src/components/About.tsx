@@ -75,19 +75,6 @@ export const About: React.FC<AboutProps> = ({ onOpenBookModal }) => {
               </h2>
             </div>
 
-            {/* Detailed Bio Content focusing purely on creativity */}
-            <div className="space-y-4 text-base text-neutral-300 leading-relaxed">
-              <p>
-                Hello, I am <strong className="text-white">{BRAND_INFO.founder}</strong> — a multi-disciplinary creative director, mobile cinematographer, photographer, brand designer, and media personality based in Lagos, Nigeria.
-              </p>
-              <p>
-                At <strong className="text-white">Adesola Creatives</strong>, creativity is not just a service — it is an obsession with visual art, emotional resonance, and high-impact storytelling. I specialize in turning simple concepts into captivating mobile video reels, sleek photography, and strategic branding that commands attention in today's fast-paced digital world.
-              </p>
-              <p>
-                As a seasoned <span className="text-white font-semibold">Media Personality</span>, I combine camera confidence with strategic creative direction. Whether directing a high-energy mobile video shoot, retouching high-resolution portraits, or designing a brand identity, every piece of content is crafted with precision to convert viewers into loyal advocates.
-              </p>
-            </div>
-
             {/* Mission Box */}
             <div className="p-5 rounded-2xl bg-neutral-900/90 border border-neutral-800 border-l-4 border-l-[#E10600]">
               <div className="text-xs font-bold uppercase tracking-widest text-[#E10600] mb-1">
