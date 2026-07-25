@@ -62,3 +62,38 @@
   background: radial-gradient(circle at 50% 20%, rgba(225, 6, 0, 0.15) 0%, rgba(13, 13, 13, 0) 70%);
 }
 
+/* High Contrast Accessibility Mode Rules */
+.high-contrast-mode {
+  color-scheme: dark;
+}
+
+.high-contrast-mode * {
+  border-color: #666666 !important;
+}
+
+.high-contrast-mode p,
+.high-contrast-mode span:not(.bg-yellow-400 *),
+.high-contrast-mode label {
+  color: #FFFFFF !important;
+}
+
+.high-contrast-mode .text-neutral-400,
+.high-contrast-mode .text-neutral-500,
+.high-contrast-mode .text-slate-400 {
+  color: #E0E0E0 !important;
+}
+
+.high-contrast-mode input,
+.high-contrast-mode select,
+.high-contrast-mode textarea {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+  border: 2px solid #FFFFFF !important;
+}
+
+.high-contrast-mode button:focus-visible,
+.high-contrast-mode a:focus-visible {
+  outline: 3px solid #FFD700 !important;
+  outline-offset: 3px !important;
+}
+

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { BRAND_INFO } from '../data/portfolioData';
-import { Phone, Mail, Instagram, MessageCircle, Send, Copy, Check, MapPin, Sparkles, PhoneCall } from 'lucide-react';
+import { Phone, Mail, Instagram, MessageCircle, Send, Copy, Check, MapPin, Sparkles } from 'lucide-react';
 import { ContactFormData } from '../types';
 
 interface ContactSectionProps {
@@ -19,7 +19,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     phone: '',
     service: preselectedService || 'Mobile Cinematography',
     packageSelected: 'Growth Brand Pack',
-    budgetRange: '₦150,000 - ₦350,000',
+    budgetRange: 'Open for Negotiation',
     projectDetails: '',
     preferredContact: 'whatsapp',
   });
@@ -42,11 +42,19 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate submission delay
+    const targetEmail = BRAND_INFO.email; // ade.adesola023@gmail.com
+    const subject = encodeURIComponent(`Booking Request: ${formData.service} - ${formData.fullName}`);
+    const body = encodeURIComponent(
+      `Full Name: ${formData.fullName}\nPhone/WhatsApp: ${formData.phone}\nClient Email: ${formData.email}\nPrimary Service: ${formData.service}\nPreferred Contact Method: ${formData.preferredContact}\nBudget/Quote Goal: ${formData.budgetRange}\n\nProject Details:\n${formData.projectDetails}`
+    );
+
+    // Launch direct mailto to recipient
+    window.location.href = `mailto:${targetEmail}?subject=${subject}&body=${body}`;
+
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitted(true);
-      onShowToast('🎉 Booking request received! Adesola will reach out on WhatsApp/Email shortly.');
+      onShowToast(`🎉 Booking request sent to ${targetEmail}!`);
     }, 1000);
   };
 
@@ -67,7 +75,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   const waMessage = encodeURIComponent(
     `Hello Adesola Creatives! I would like to book a session for ${formData.service || 'a project'}. My name is ${
       formData.fullName || 'Client'
-    }.`
+    }. My email is ${formData.email || 'ade.adesola023@gmail.com'}.`
   );
   const whatsappUrl = `https://wa.me/${BRAND_INFO.whatsappPrimary}?text=${waMessage}`;
 
@@ -95,7 +103,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
             </h2>
 
             <p className="text-base sm:text-xl text-white/90 leading-relaxed font-normal">
-              Whether you need a full day mobile shoot in Lagos, personal branding photography, graphic design, or monthly social media management, let's talk today.
+              Whether you need a full day mobile shoot in Lagos, personal branding photography, graphic design, or monthly social media management, let's talk today. All booking requests are routed instantly to our official inbox.
             </p>
 
             <div className="pt-4 flex flex-wrap gap-4 items-center">
@@ -110,11 +118,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               </a>
 
               <a
-                href={`tel:${BRAND_INFO.phones[0]}`}
+                href={`mailto:${BRAND_INFO.email}`}
                 className="px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 font-bold text-xs uppercase tracking-wider flex items-center gap-2 transition-all"
               >
-                <Phone className="w-4 h-4" />
-                <span>Call {BRAND_INFO.phones[0]}</span>
+                <Mail className="w-4 h-4" />
+                <span>Send Email Request</span>
               </a>
             </div>
           </div>
@@ -129,7 +137,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               Send a Booking Request
             </h3>
             <p className="text-xs text-neutral-400 mb-8">
-              Fill out this quick form and Adesola will respond within 2 hours with availability and project details.
+              Fill out this form to submit your booking session request directly to our team.
             </p>
 
             {submitted ? (
@@ -138,16 +146,16 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   <Check className="w-8 h-8" />
                 </div>
                 <h4 className="font-heading font-bold text-2xl text-white">
-                  Booking Request Submitted!
+                  Booking Request Sent!
                 </h4>
                 <p className="text-sm text-neutral-300 max-w-md mx-auto">
-                  Thank you, <strong className="text-white">{formData.fullName}</strong>. We have received your project details for <strong className="text-white">{formData.service}</strong>.
+                  Thank you, <strong className="text-white">{formData.fullName}</strong>. Your project details for <strong className="text-white">{formData.service}</strong> have been routed to our team.
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
                   className="px-6 py-2.5 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-xs font-bold text-white uppercase tracking-wider"
                 >
-                  Submit Another Message
+                  Submit Another Booking Request
                 </button>
               </div>
             ) : (
@@ -185,7 +193,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label className="text-xs font-bold uppercase tracking-wider text-neutral-300 block mb-2">
-                      Email Address *
+                      Your Email Address *
                     </label>
                     <input
                       type="email"
@@ -273,11 +281,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   className="w-full py-4 px-6 rounded-xl bg-[#E10600] hover:bg-red-700 text-white font-bold text-xs uppercase tracking-wider shadow-xl red-glow flex items-center justify-center gap-2 transition-all hover:scale-[1.01]"
                 >
                   {isSubmitting ? (
-                    <span>Sending Request...</span>
+                    <span>Routing Request...</span>
                   ) : (
                     <>
                       <Send className="w-4 h-4" />
-                      <span>Submit Booking Request</span>
+                      <span>Send Booking Request</span>
                     </>
                   )}
                 </button>
@@ -323,7 +331,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-[10px] uppercase font-mono text-neutral-500">Email Address</div>
+                    <div className="text-[10px] uppercase font-mono text-neutral-500">Official Email</div>
                     <div className="text-xs sm:text-sm font-bold text-white font-mono truncate max-w-[200px] sm:max-w-none">
                       {BRAND_INFO.email}
                     </div>
@@ -341,7 +349,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               {/* Social Channels */}
               <div className="pt-4 border-t border-neutral-800 space-y-3">
                 <span className="text-xs font-bold uppercase tracking-wider text-neutral-400 block">
-                  Follow & Connect Socials:
+                  Instagram Accounts:
                 </span>
                 
                 <a
@@ -353,7 +361,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   <div className="flex items-center gap-3">
                     <Instagram className="w-5 h-5 text-pink-500" />
                     <div>
-                      <div className="text-xs font-bold text-white">Instagram</div>
+                      <div className="text-xs font-bold text-white">Main Instagram</div>
                       <div className="text-[11px] text-neutral-400">{BRAND_INFO.instagram}</div>
                     </div>
                   </div>
@@ -361,21 +369,19 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 </a>
 
                 <a
-                  href={BRAND_INFO.tiktokUrl}
+                  href={BRAND_INFO.instagramBackupUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3.5 rounded-xl bg-black hover:bg-neutral-800 border border-neutral-800 text-neutral-200 transition-colors"
+                  className="flex items-center justify-between p-3.5 rounded-xl bg-black hover:bg-neutral-800 border border-neutral-800 text-neutral-800 hover:text-white transition-colors"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded bg-neutral-800 flex items-center justify-center font-bold text-xs text-cyan-400">
-                      TT
-                    </div>
+                    <Instagram className="w-5 h-5 text-purple-500" />
                     <div>
-                      <div className="text-xs font-bold text-white">TikTok</div>
-                      <div className="text-[11px] text-neutral-400">{BRAND_INFO.tiktok}</div>
+                      <div className="text-xs font-bold text-white">Backup Instagram</div>
+                      <div className="text-[11px] text-neutral-400">{BRAND_INFO.instagramBackup}</div>
                     </div>
                   </div>
-                  <span className="text-xs text-[#E10600] font-bold">Watch Reels →</span>
+                  <span className="text-xs text-[#E10600] font-bold">Follow →</span>
                 </a>
               </div>
             </div>

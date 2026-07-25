@@ -15,9 +15,11 @@ export const BRAND_INFO = {
   phones: ["09074018013", "08059122946"],
   whatsappPrimary: "2349074018013",
   whatsappSecondary: "2348059122946",
-  email: "samueladesola95@gmail.com",
-  instagram: "@adesolacreatives",
-  instagramUrl: "https://instagram.com/adesolacreatives",
+  email: "ade.adesola023@gmail.com",
+  instagram: "@adesola_creatives",
+  instagramUrl: "https://instagram.com/adesola_creatives",
+  instagramBackup: "@adesolacreatives",
+  instagramBackupUrl: "https://instagram.com/adesolacreatives",
   tiktok: "@adesola_creatives",
   tiktokUrl: "https://www.tiktok.com/@adesola_creatives?_r=1&_t=ZS-98JJNIrpemS",
   linkedInUrl: "#",
@@ -36,6 +38,7 @@ export const SERVICES: ServiceItem[] = [
     title: "Mobile Cinematography",
     category: "video",
     iconName: "Video",
+    imageUrl: "https://images.unsplash.com/photo-1527011046414-4781f1f94f8c?auto=format&fit=crop&w=800&q=80",
     shortDesc: "High-impact, 4K mobile video production engineered for Instagram Reels, TikTok, YouTube Shorts, and brand commercials.",
     fullDesc: "We bring cinematic flair to high-end mobile video production. Using advanced gimbals, specialized lenses, wireless microphones, and portable lighting rigs, we shoot crisp 4K vertical and horizontal video content that stops the scroll.",
     features: [
@@ -45,7 +48,7 @@ export const SERVICES: ServiceItem[] = [
       "Fast-Cut Color Graded Reels & TikTok Edits",
       "Trend-Based Sound & Viral Pacing Strategy"
     ],
-    startingPrice: "Negotiable / Contact for Quote",
+    startingPrice: "Tailored Pricing",
     deliverables: "Color-Graded Reels/TikToks + Raw B-Roll Footage"
   },
   {
@@ -53,6 +56,7 @@ export const SERVICES: ServiceItem[] = [
     title: "Branding & Graphic Design",
     category: "design",
     iconName: "Palette",
+    imageUrl: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80",
     shortDesc: "Bold visual identity design, custom logo marks, promotional banners, event flyers, and high-conversion social media carousels.",
     fullDesc: "Stand out in a noisy marketplace. We craft memorable brand identities, custom typography, promotional campaign flyers, brand guideline decks, and high-converting marketing graphics tailored to your brand's unique ethos.",
     features: [
@@ -62,7 +66,7 @@ export const SERVICES: ServiceItem[] = [
       "Billboard, Merchandise & Event Backdrop Graphics",
       "Source Files Included (AI/PSD/PDF)"
     ],
-    startingPrice: "Negotiable / Contact for Quote",
+    startingPrice: "Tailored Pricing",
     deliverables: "Vector Logos, Brand Guideline Sheet, Custom Social Graphics"
   },
   {
@@ -70,6 +74,7 @@ export const SERVICES: ServiceItem[] = [
     title: "Creative Mobile Photography",
     category: "photography",
     iconName: "Camera",
+    imageUrl: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80",
     shortDesc: "Sharp, high-resolution mobile photography for events, personal branding, portraits, and commercial product showcases with professional retouching.",
     fullDesc: "Pictures speak louder when framed with intent and creativity. We execute high-end mobile photography for vibrant event coverage, executive personal branding, and product showcases, polished with professional high-grade skin retouching and color grading.",
     features: [
@@ -79,7 +84,7 @@ export const SERVICES: ServiceItem[] = [
       "Professional High-End Skin Retouching & Color Grading",
       "Web-Optimized & Print-Ready High-Res Exports"
     ],
-    startingPrice: "Negotiable / Contact for Quote",
+    startingPrice: "Tailored Pricing",
     deliverables: "Edited High-Res Retouched Photos + Online Private Gallery"
   },
   {
@@ -87,6 +92,7 @@ export const SERVICES: ServiceItem[] = [
     title: "Social Media Growth & Management",
     category: "social",
     iconName: "TrendingUp",
+    imageUrl: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80",
     shortDesc: "End-to-end growth strategy, content calendar creation, video publishing, community engagement, and organic page scaling.",
     fullDesc: "Take the guesswork out of social growth. We manage your Instagram and TikTok channels — producing mobile content, crafting compelling captions, scheduling posts, monitoring analytics, and engaging your audience worldwide.",
     features: [
@@ -96,7 +102,7 @@ export const SERVICES: ServiceItem[] = [
       "Daily Audience Engagement & Moderation",
       "Monthly Performance & Analytics Report"
     ],
-    startingPrice: "Negotiable / Contact for Quote",
+    startingPrice: "Tailored Pricing",
     deliverables: "Full Monthly Management + Mobile Videos/Reels + Analytics Deck"
   }
 ];
@@ -104,72 +110,101 @@ export const SERVICES: ServiceItem[] = [
 export const PORTFOLIO_ITEMS: PortfolioItem[] = [
   {
     id: "p1",
-    title: "Lagos Fashion Week High-Fashion Reel",
-    client: "StyleNaija Magazine",
+    title: "4K Mobile Fashion Reel — Runway Highlights",
+    client: "Instagram Showcase",
     category: "video",
     categoryLabel: "Mobile Cinematography",
     thumbnail: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    description: "Dynamic mobile video shoot capturing runway highlights, backstage model prep, and street style aesthetics for Lagos Fashion Week.",
+    instagramUrl: "https://instagram.com/adesola_creatives",
+    description: "Dynamic 4K mobile video shoot capturing runway highlights, backstage model prep, and street style aesthetics. View full video post on Instagram.",
     deliverables: ["1x 60s Main Fashion Reel", "3x 15s Story Teasers", "Raw B-Roll Reel"],
     date: "June 2026"
   },
   {
     id: "p2",
-    title: "Eko Tech Founder Personal Branding Shoot",
-    client: "Tobi Adebayo (Fintech Leader)",
-    category: "photography",
-    categoryLabel: "Mobile Photography",
-    thumbnail: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
-    description: "Executive portraiture shoot in Ikoyi, Lagos, blending corporate authority with approachable style, enhanced with professional skin retouching.",
-    deliverables: ["25 Professionally Retouched Portraits", "High-Res Print & Web Formats"],
-    date: "May 2026"
-  },
-  {
-    id: "p3",
-    title: "Naija Brand Identity & Social Campaign",
-    client: "Urban Grind Cafe",
-    category: "design",
-    categoryLabel: "Branding & Design",
-    thumbnail: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80",
-    description: "Complete visual redesign including brand guidelines, physical menu cards, promotional instagram carousels, and opening event launch flyers.",
-    deliverables: ["Logo Refresh", "Brand Guidelines", "10 Social Media Graphics"],
-    date: "April 2026"
-  },
-  {
-    id: "p4",
-    title: "Paystack Creator Series 30-Day Reels Campaign",
-    client: "Paystack Nigeria",
-    category: "social",
-    categoryLabel: "Social Media",
-    thumbnail: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    description: "Comprehensive social media content creation and mobile video production targeting African creators and entrepreneurs.",
-    deliverables: ["12 Mobile Video Reels", "30 Feed Posts & Captions", "Community Growth Strategy"],
-    date: "March 2026"
-  },
-  {
-    id: "p5",
-    title: "Kuda Bank Community Spotlight Reel",
-    client: "Kuda Microfinance Bank",
+    title: "Urban Streetwear Commercial Mobile Reel",
+    client: "Backup Instagram Showcase",
     category: "video",
     categoryLabel: "Mobile Cinematography",
     thumbnail: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    description: "High-energy 4K mobile cinematography reel spotlighting young Nigerian creatives and tech entrepreneurs for a national digital campaign.",
+    instagramUrl: "https://instagram.com/adesolacreatives",
+    description: "High-energy mobile cinematography reel spotlighting young Nigerian creatives and tech entrepreneurs. View complete video post directly on Instagram.",
     deliverables: ["4K Mobile Commercial Reel", "Social Media Teasers", "Raw B-Roll"],
+    date: "May 2026"
+  },
+  {
+    id: "p3",
+    title: "High-Conversion Event Flyer & Social Carousel",
+    client: "Instagram Showcase",
+    category: "design",
+    categoryLabel: "Branding & Design",
+    thumbnail: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=800&q=80",
+    instagramUrl: "https://instagram.com/adesola_creatives",
+    description: "Custom promotional graphics, multi-slide educational carousels, and launch banners crafted for digital channels. View carousel post on Instagram.",
+    deliverables: ["Promotional Flyers", "Instagram Carousels", "Event Backdrop Design"],
+    date: "April 2026"
+  },
+  {
+    id: "p4",
+    title: "Brand Identity & Graphic Design Suite",
+    client: "Backup Instagram Showcase",
+    category: "design",
+    categoryLabel: "Branding & Design",
+    thumbnail: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80",
+    instagramUrl: "https://instagram.com/adesolacreatives",
+    description: "Custom graphic design assets, typography layouts, color swatches, and visual social media banners. View post on Instagram.",
+    deliverables: ["Social Media Banners", "Visual Assets", "Brand Graphics"],
+    date: "March 2026"
+  },
+  {
+    id: "p5",
+    title: "Creative Mobile Photography & Skin Retouching",
+    client: "Instagram Showcase",
+    category: "photography",
+    categoryLabel: "Mobile Photography",
+    thumbnail: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80",
+    instagramUrl: "https://instagram.com/adesola_creatives",
+    description: "Sharp mobile photography session with professional high-end skin retouching and color grading. View original photo set on Instagram.",
+    deliverables: ["Retouched High-Res Photos", "Web & Print Ready Exports"],
     date: "February 2026"
   },
   {
     id: "p6",
-    title: "Eko Music Festival Live Concert Coverage",
-    client: "Eko Music Festival",
+    title: "Mobile Event & Brand Lifestyle Photography",
+    client: "Backup Instagram Showcase",
     category: "photography",
     categoryLabel: "Mobile Photography",
-    thumbnail: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80",
-    description: "High-energy live event mobile photography capturing performer energy, crowd moments, and stage lighting, with express high-grade color grading.",
-    deliverables: ["150 Professionally Color-Graded Photos", "Same-Night Press Kit Delivery"],
+    thumbnail: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80",
+    instagramUrl: "https://instagram.com/adesolacreatives",
+    description: "Vibrant mobile photography capturing candid brand moments, product framing, and event lighting. View photo gallery on Instagram.",
+    deliverables: ["Color-Graded Photos", "Private Online Gallery"],
     date: "January 2026"
+  },
+  {
+    id: "p7",
+    title: "Brand Scaling & Social Media Moderation",
+    client: "Instagram Showcase",
+    category: "social",
+    categoryLabel: "Social Media",
+    thumbnail: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=800&q=80",
+    instagramUrl: "https://instagram.com/adesola_creatives",
+    description: "Strategic account management, publishing schedule, audience engagement, and monthly metric reporting. View campaign highlights on Instagram.",
+    deliverables: ["Monthly Content Calendar", "Audience Moderation", "Analytics Dashboard"],
+    date: "May 2026"
+  },
+  {
+    id: "p8",
+    title: "Social Content Strategy & Organic Growth",
+    client: "Backup Instagram Showcase",
+    category: "social",
+    categoryLabel: "Social Media",
+    thumbnail: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80",
+    instagramUrl: "https://instagram.com/adesolacreatives",
+    description: "Organic growth campaign utilizing mobile video reels, trend curation, and strategic posting. View full breakdown on Instagram.",
+    deliverables: ["Organic Growth Strategy", "Content Curation", "Monthly Performance Deck"],
+    date: "April 2026"
   }
 ];
 
@@ -208,7 +243,7 @@ export const PRICING_PACKAGES: PricingPackage[] = [
   {
     id: "starter",
     name: "Starter Content Pack",
-    pricingLabel: "Custom Quote / Negotiable",
+    pricingLabel: "Tailored Pricing",
     tagline: "Essential visual boost for brands and creators looking for high-quality mobile video and photos.",
     popular: false,
     bestFor: "Growing Brands & Creators",
@@ -225,7 +260,7 @@ export const PRICING_PACKAGES: PricingPackage[] = [
   {
     id: "growth",
     name: "Growth Brand Pack",
-    pricingLabel: "Custom Quote / Negotiable",
+    pricingLabel: "Tailored Pricing",
     tagline: "Our most popular package for active brands aiming to dominate social channels.",
     popular: true,
     bestFor: "Established Businesses & E-Commerce Brands",
@@ -244,7 +279,7 @@ export const PRICING_PACKAGES: PricingPackage[] = [
   {
     id: "premium",
     name: "Full Studio Retainer",
-    pricingLabel: "Custom Quote / Negotiable",
+    pricingLabel: "Tailored Pricing",
     tagline: "Complete content production & full social media growth management.",
     popular: false,
     bestFor: "High-Growth Brands & Companies",
@@ -277,6 +312,6 @@ export const FAQS = [
   },
   {
     q: "How do we discuss pricing and start working together?",
-    a: "Simple! Click any 'Book a Session' or 'Chat on WhatsApp' button to share your project details. Every project quote is customizable and negotiable to fit your exact campaign goals."
+    a: "Simple! Click any 'Book a Session' or 'Chat on WhatsApp' button to share your project details. Every project quote is customizable to fit your exact campaign goals."
   }
 ];

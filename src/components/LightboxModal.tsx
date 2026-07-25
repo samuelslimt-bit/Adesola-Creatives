@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, ExternalLink, Calendar, CheckCircle2, TrendingUp, Sparkles, Film, Image as ImageIcon } from 'lucide-react';
+import { X, ExternalLink, Calendar, CheckCircle2, Instagram, Film } from 'lucide-react';
 import { PortfolioItem } from '../types';
 
 interface LightboxModalProps {
@@ -11,6 +11,8 @@ interface LightboxModalProps {
 
 export const LightboxModal: React.FC<LightboxModalProps> = ({ item, onClose, onBookItem }) => {
   if (!item) return null;
+
+  const instagramLink = item.instagramUrl || "https://instagram.com/adesola_creatives";
 
   return (
     <AnimatePresence>
@@ -38,7 +40,7 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({ item, onClose, onB
                 {item.categoryLabel}
               </span>
               <span className="text-xs text-neutral-400 font-mono hidden sm:inline">
-                Client: <strong className="text-white">{item.client}</strong>
+                Account: <strong className="text-white">{item.client}</strong>
               </span>
             </div>
             <button
@@ -53,43 +55,26 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({ item, onClose, onB
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 max-h-[80vh] overflow-y-auto">
             {/* Visual Media Container */}
             <div className="lg:col-span-7 bg-black flex items-center justify-center relative min-h-[300px]">
-              {item.videoUrl ? (
-                <div className="w-full h-full aspect-video lg:aspect-auto min-h-[320px] flex items-center justify-center bg-black relative">
-                  <img
-                    src={item.thumbnail}
-                    alt={item.title}
-                    className="w-full h-full object-cover opacity-80"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center p-6 text-center">
-                    <div className="w-16 h-16 rounded-full bg-[#E10600] text-white flex items-center justify-center red-glow-lg mb-3">
-                      <Film className="w-8 h-8" />
-                    </div>
-                    <h4 className="text-sm font-bold text-white mb-1">Interactive Video Reel Preview</h4>
-                    <p className="text-xs text-neutral-400 max-w-xs mb-4">
-                      Shot in crisp 4K 60FPS mobile video format for Instagram Reels & TikTok
-                    </p>
-                    <a
-                      href={item.videoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-2 bg-neutral-900 border border-neutral-700 hover:border-[#E10600] text-white text-xs font-bold rounded-lg flex items-center gap-2"
-                    >
-                      <span>Watch Full HD Video</span>
-                      <ExternalLink className="w-3.5 h-3.5 text-[#E10600]" />
-                    </a>
-                  </div>
+              <div className="relative w-full h-full min-h-[350px]">
+                <img
+                  src={item.thumbnail}
+                  alt={item.title}
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent flex flex-col justify-end p-6">
+                  <a
+                    href={instagramLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="self-start px-4 py-2 bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 hover:from-purple-700 hover:to-red-700 text-white text-xs font-bold rounded-xl flex items-center gap-2 shadow-lg"
+                  >
+                    <Instagram className="w-4 h-4" />
+                    <span>Watch Post on Instagram</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
                 </div>
-              ) : (
-                <div className="w-full h-full min-h-[350px]">
-                  <img
-                    src={item.thumbnail}
-                    alt={item.title}
-                    className="w-full h-full object-cover"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-              )}
+              </div>
             </div>
 
             {/* Case Study Details */}
@@ -116,7 +101,7 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({ item, onClose, onB
                 <div className="mb-6">
                   <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-400 mb-3 flex items-center gap-1.5">
                     <CheckCircle2 className="w-4 h-4 text-[#E10600]" />
-                    Project Deliverables
+                    Project Scope Deliverables
                   </h4>
                   <ul className="space-y-2">
                     {item.deliverables.map((d, idx) => (
@@ -130,6 +115,17 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({ item, onClose, onB
 
               {/* Action Buttons */}
               <div className="pt-4 border-t border-neutral-800 space-y-2">
+                <a
+                  href={instagramLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-3 px-4 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 mb-2"
+                >
+                  <Instagram className="w-4 h-4 text-[#E10600]" />
+                  <span>View Post on Instagram</span>
+                  <ExternalLink className="w-3.5 h-3.5 text-neutral-400" />
+                </a>
+
                 <button
                   onClick={() => {
                     onClose();
@@ -137,7 +133,7 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({ item, onClose, onB
                   }}
                   className="w-full py-3 px-4 rounded-xl bg-[#E10600] hover:bg-red-700 text-white font-bold text-xs uppercase tracking-wider shadow-lg red-glow transition-all"
                 >
-                  Book a Similar Project
+                  Book a Similar Session
                 </button>
               </div>
             </div>

@@ -5,6 +5,7 @@ export interface ServiceItem {
   title: string;
   category: ServiceCategory;
   iconName: string;
+  imageUrl?: string;
   shortDesc: string;
   fullDesc: string;
   features: string[];
@@ -20,6 +21,7 @@ export interface PortfolioItem {
   categoryLabel: string;
   thumbnail: string;
   videoUrl?: string;
+  instagramUrl?: string;
   description: string;
   deliverables: string[];
   results?: string;

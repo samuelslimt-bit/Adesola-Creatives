@@ -1,15 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, PhoneCall, Sparkles, MessageSquare } from 'lucide-react';
+import { Menu, X, PhoneCall, Sparkles, MessageSquare, Eye } from 'lucide-react';
 import { BRAND_INFO } from '../data/portfolioData';
 import { Logo } from './Logo';
 
 interface NavbarProps {
+  activeTab: string;
+  onSelectTab: (tabId: string) => void;
   onOpenBookModal: (serviceOrPackage?: string) => void;
   onOpenQuoteModal: () => void;
+  isHighContrast: boolean;
+  onToggleHighContrast: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenBookModal, onOpenQuoteModal }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+  activeTab,
+  onSelectTab,
+  onOpenBookModal,
+  onOpenQuoteModal,
+  isHighContrast,
+  onToggleHighContrast,
+}) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -26,22 +37,28 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBookModal, onOpenQuoteModa
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#hero' },
-    { name: 'Services', href: '#services' },
-    { name: 'Portfolio', href: '#portfolio' },
-    { name: 'Process', href: '#process' },
-    { name: 'About', href: '#about' },
-    { name: 'Packages', href: '#packages' },
-    { name: 'Contact', href: '#contact' },
+    { id: 'hero', name: 'Home' },
+    { id: 'services', name: 'Services' },
+    { id: 'portfolio', name: 'Catalog' },
+    { id: 'process', name: 'Process' },
+    { id: 'about', name: 'About' },
+    { id: 'packages', name: 'Packages' },
+    { id: 'contact', name: 'Contact' },
   ];
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
+  const handleNavClick = (id: string) => {
     setMobileMenuOpen(false);
-    const targetElement = document.querySelector(href);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: 'smooth' });
-    }
+    onSelectTab(id);
+
+    // Scroll to target element
+    setTimeout(() => {
+      const elem = document.getElementById(id);
+      if (elem) {
+        elem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }, 50);
   };
 
   return (
@@ -54,26 +71,51 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBookModal, onOpenQuoteModa
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Logo */}
-        <a href="#hero" className="flex items-center gap-2 group py-1">
+        <button onClick={() => handleNavClick('hero')} className="flex items-center gap-2 group py-1 text-left">
           <Logo size="sm" />
-        </a>
+        </button>
 
         {/* Desktop Links */}
         <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={(e) => handleNavClick(e, link.href)}
-              className="text-neutral-300 hover:text-white transition-colors relative py-1 hover:after:w-full after:w-0 after:h-[2px] after:bg-[#E10600] after:absolute after:bottom-0 after:left-0 after:transition-all after:duration-300"
-            >
-              {link.name}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = activeTab === link.id;
+            return (
+              <button
+                key={link.id}
+                onClick={() => handleNavClick(link.id)}
+                className={`transition-colors relative py-1 ${
+                  isActive ? 'text-[#E10600] font-bold' : 'text-neutral-300 hover:text-white'
+                }`}
+              >
+                <span>{link.name}</span>
+                {isActive && (
+                  <motion.div
+                    layoutId="activeNavIndicator"
+                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#E10600]"
+                  />
+                )}
+              </button>
+            );
+          })}
         </nav>
 
         {/* Action Buttons */}
         <div className="hidden lg:flex items-center gap-3">
+          {/* High Contrast Accessibility Toggle */}
+          <button
+            onClick={onToggleHighContrast}
+            className={`flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-lg border transition-all ${
+              isHighContrast
+                ? 'bg-yellow-400 text-black border-yellow-300 font-bold shadow-md'
+                : 'bg-neutral-900 border-neutral-700 text-neutral-300 hover:text-white hover:border-neutral-500'
+            }`}
+            title="Toggle High Contrast Mode for Accessibility"
+            aria-label="Toggle High Contrast Mode"
+          >
+            <Eye className="w-3.5 h-3.5" />
+            <span>{isHighContrast ? 'Contrast: High' : 'High Contrast'}</span>
+          </button>
+
           <button
             onClick={onOpenQuoteModal}
             className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-lg bg-neutral-900 border border-neutral-700 hover:border-neutral-500 text-neutral-200 hover:text-white transition-all"
@@ -84,7 +126,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBookModal, onOpenQuoteModa
           </button>
 
           <button
-            onClick={() => onOpenBookModal()}
+            onClick={() => handleNavClick('contact')}
             className="flex items-center gap-2 px-5 py-2.5 text-xs font-bold uppercase tracking-wider rounded-lg bg-[#E10600] hover:bg-red-700 text-white shadow-lg red-glow hover:scale-[1.02] active:scale-[0.98] transition-all"
           >
             <PhoneCall className="w-3.5 h-3.5" />
@@ -92,10 +134,23 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBookModal, onOpenQuoteModa
           </button>
         </div>
 
-        {/* Mobile Hamburger Button */}
+        {/* Mobile Hamburger Button & Quick Actions */}
         <div className="flex lg:hidden items-center gap-2">
           <button
-            onClick={() => onOpenBookModal()}
+            onClick={onToggleHighContrast}
+            className={`p-2 text-xs font-bold rounded-lg border transition-all ${
+              isHighContrast
+                ? 'bg-yellow-400 text-black border-yellow-300'
+                : 'bg-neutral-900 text-neutral-300 border-neutral-800 hover:text-white'
+            }`}
+            title="High Contrast Mode"
+            aria-label="High Contrast Mode"
+          >
+            <Eye className="w-4 h-4" />
+          </button>
+
+          <button
+            onClick={() => handleNavClick('contact')}
             className="px-3 py-1.5 text-xs font-bold uppercase rounded-md bg-[#E10600] text-white shadow-md"
           >
             Book
@@ -122,19 +177,39 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBookModal, onOpenQuoteModa
           >
             <div className="flex flex-col space-y-2">
               {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className="px-4 py-2.5 text-base font-semibold text-neutral-200 hover:text-white hover:bg-neutral-900/80 rounded-lg transition-colors flex items-center justify-between"
+                <button
+                  key={link.id}
+                  onClick={() => handleNavClick(link.id)}
+                  className={`w-full text-left px-4 py-2.5 text-base font-semibold rounded-lg transition-colors flex items-center justify-between ${
+                    activeTab === link.id
+                      ? 'bg-[#E10600]/10 text-[#E10600] border border-[#E10600]/30'
+                      : 'text-neutral-200 hover:text-white hover:bg-neutral-900/80'
+                  }`}
                 >
                   <span>{link.name}</span>
-                  <span className="text-[#E10600] opacity-0 group-hover:opacity-100">→</span>
-                </a>
+                  <span className="text-[#E10600]">→</span>
+                </button>
               ))}
             </div>
 
             <div className="pt-3 border-t border-neutral-800 space-y-2">
+              <button
+                onClick={onToggleHighContrast}
+                className={`w-full flex items-center justify-between px-4 py-3 text-sm font-semibold rounded-lg border transition-all ${
+                  isHighContrast
+                    ? 'bg-yellow-400 text-black border-yellow-300 font-bold'
+                    : 'bg-neutral-900 border-neutral-700 text-neutral-200'
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <Eye className="w-4 h-4" />
+                  <span>High Contrast Mode</span>
+                </div>
+                <span className={`text-xs px-2 py-0.5 rounded font-mono ${isHighContrast ? 'bg-black text-white' : 'bg-neutral-800 text-neutral-400'}`}>
+                  {isHighContrast ? 'ACTIVE' : 'OFF'}
+                </span>
+              </button>
+
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
@@ -147,10 +222,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBookModal, onOpenQuoteModa
               </button>
 
               <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenBookModal();
-                }}
+                onClick={() => handleNavClick('contact')}
                 className="w-full flex items-center justify-center gap-2 px-4 py-3 text-sm font-bold uppercase tracking-wider rounded-lg bg-[#E10600] text-white red-glow"
               >
                 <MessageSquare className="w-4 h-4" />

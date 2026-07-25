@@ -3,9 +3,25 @@ import { ArrowUp, Instagram, Mail, Phone } from 'lucide-react';
 import { BRAND_INFO } from '../data/portfolioData';
 import { Logo } from './Logo';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onSelectTab?: (tabId: string) => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleNavClick = (id: string) => {
+    if (onSelectTab) {
+      onSelectTab(id);
+    }
+    const elem = document.getElementById(id);
+    if (elem) {
+      elem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (
@@ -16,9 +32,9 @@ export const Footer: React.FC = () => {
           
           {/* Brand Col */}
           <div className="md:col-span-5 space-y-4">
-            <a href="#hero" className="inline-block group">
+            <button onClick={() => handleNavClick('hero')} className="inline-block group text-left">
               <Logo size="sm" />
-            </a>
+            </button>
 
             <p className="text-sm text-neutral-400 max-w-sm leading-relaxed">
               "{BRAND_INFO.tagline}"
@@ -31,16 +47,16 @@ export const Footer: React.FC = () => {
           {/* Quick Links */}
           <div className="md:col-span-3 space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-white">
-              Navigation
+              Navigation Pages
             </h4>
             <ul className="space-y-2 text-xs">
-              <li><a href="#hero" className="hover:text-[#E10600] transition-colors">Home</a></li>
-              <li><a href="#services" className="hover:text-[#E10600] transition-colors">Services</a></li>
-              <li><a href="#portfolio" className="hover:text-[#E10600] transition-colors">Catalog Gallery</a></li>
-              <li><a href="#process" className="hover:text-[#E10600] transition-colors">How We Work</a></li>
-              <li><a href="#about" className="hover:text-[#E10600] transition-colors">About Adesola</a></li>
-              <li><a href="#packages" className="hover:text-[#E10600] transition-colors">Content Packages</a></li>
-              <li><a href="#contact" className="hover:text-[#E10600] transition-colors">Contact & Book</a></li>
+              <li><button onClick={() => handleNavClick('hero')} className="hover:text-[#E10600] transition-colors">Home</button></li>
+              <li><button onClick={() => handleNavClick('services')} className="hover:text-[#E10600] transition-colors">Services</button></li>
+              <li><button onClick={() => handleNavClick('portfolio')} className="hover:text-[#E10600] transition-colors">Catalog Gallery</button></li>
+              <li><button onClick={() => handleNavClick('process')} className="hover:text-[#E10600] transition-colors">How We Work</button></li>
+              <li><button onClick={() => handleNavClick('about')} className="hover:text-[#E10600] transition-colors">About Adesola</button></li>
+              <li><button onClick={() => handleNavClick('packages')} className="hover:text-[#E10600] transition-colors">Content Packages</button></li>
+              <li><button onClick={() => handleNavClick('contact')} className="hover:text-[#E10600] transition-colors">Contact & Book</button></li>
             </ul>
           </div>
 
@@ -60,7 +76,7 @@ export const Footer: React.FC = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Instagram className="w-3.5 h-3.5 text-[#E10600]" />
-                <span>{BRAND_INFO.instagram}</span>
+                <a href={BRAND_INFO.instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">{BRAND_INFO.instagram}</a>
               </div>
             </div>
 
